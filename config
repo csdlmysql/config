@@ -7,18 +7,18 @@
 
 # i3 config file (v4)
 #
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+# Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
-set $sup Mod4
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-# font pango:monospace 8
+#font pango:monospace 8
+font pango:Awesome 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono 8
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -31,7 +31,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -42,17 +42,6 @@ bindsym $mod+d exec dmenu_run
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-#set $ws
-set $ws1 "1: CODE"
-set $ws2 "2: WWW"
-set $ws3 "3: .>"
-set $ws4 "4: OTHERS"
-set $ws5 "5:"
-set $ws6 "6:"
-set $ws7 "7:"
-set $ws8 "8: Ipython"
-set $ws9 "9: Skype"
-set $ws10 "10: Mail"
 
 # change focus
 bindsym $mod+h focus left
@@ -60,26 +49,14 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-#bindsym $mod+Left focus left
-#bindsym $mod+Down focus down
-#bindsym $mod+Up focus up
-#bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# alternatively, you can use the cursor keys:
-#bindsym $mod+Shift+Left move left
-#bindsym $mod+Shift+Down move down
-#bindsym $mod+Shift+Up move up
-#bindsym $mod+Shift+Right move right
-
 # split in horizontal orientation
-bindsym $mod+z+h split h
+# bindsym $mod+h+l split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -104,18 +81,30 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1:SERVICE"
+set $ws2 "2:WWW"
+set $ws3 "3:CODE"
+set $ws4 "4:CHAT"
+set $ws5 "5:ORTHER"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8:IPYTHON"
+set $ws9 "9:CHAT"
+set $ws10 "10:MUSIC"
+
 # switch to workspace
-bindsym $mod+1    workspace $ws1
-bindsym $mod+2    workspace $ws2
-bindsym $mod+3    workspace $ws3
-bindsym $mod+4    workspace $ws4
-bindsym $mod+5    workspace $ws5
-bindsym $mod+6    workspace $ws6
-bindsym $mod+7    workspace $ws7
-bindsym $mod+8    workspace $ws8
-bindsym $mod+9    workspace $ws9
-bindsym $mod+0    workspace $ws10
-bindsym $mod+Tab  workspace back_and_forth
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -134,7 +123,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -144,20 +133,15 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape
+        # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
         bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -166,77 +150,37 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
-        tray_output primary
-        font pango: FontAwesome 9
 }
-bindsym $mod+c exec google-chrome
 
-# application
-exec slack
-exec google-chrome
-exec terminal
-exec skypeforlinux
-exec thunderbird
-assign [class ="Slack"] $ws4
-assign [class ="Google-chrome"] $ws2
-assign [class ="Atom"] $ws1
-assign [class ="Skype" ] $ws9
-assign [class ="Thunderbird" ] $ws10
+#smart gaps
+smart_gaps on
 
-# orther
-set $black       #212121
-set $darkblack   #000000
-set $red         #fb4934
-set $darkred     #cc241di
-set $green       #b8bb26
-set $darkgreen   #98971a
-set $yellow      #fabd2f
-set $darkyellow  #d79921
-set $blue        #83a598
-set $darkblue    #458588
-set $magenta     #d3869b
-set $darkmagenta #b16286
-set $cyan        #8ec07c
-set $darkcyan    #689d6a
-set $white       #00BCD4
-set $darkwhite   #a89984
-set $background  #000000
-# set $transparent #000000FF
+#smart borders
+smart_borders on
 
+#gaps
+gaps inner 12
+gaps outer 20
 
-workspace_auto_back_and_forth yes
+#set wallpaper
+exec feh --bg-scale ~/Pictures/beautifulwall.jpg
 
-floating_minimum_size -1 x -1
-floating_maximum_size -1 x -1
+#hide title bar
+new_window pixel 0
 
-font pango:Consolas, FontAwesome Bold 10
+# set color
+set $white	#ffffff
+set $red	#ee2360
+set $blue	#69DBC7
+default_border pixel 5
+# class                 border  backgr. text    indicator child_border
+client.focused          $red	$red	$red	$red	$white	
+client.focused_inactive  $blue	$white	$blue	$blue	$blue 
+client.unfocused        $white  $white	$red	$red	$red
 
-# #CLASS                   BORDER   BACKGROUND  TEXT     INDICATOR
-# client.focused           #4c7899  $blue       #eff1f5  #2e9ef4
-# client.unfocused         #333333  #2b303b     #888888  #292d2e
-# client.focused_inactive  #333333  $violet     #eff1f5  #484e50
-# client.urgent            #2f343a  $red        #eff1f5  #900000
-# client.background        $black
-
-#CLASS                   BORDER         BACKGROUND        TEXT      INDICATOR      CHILD BORDER
-client.focused           $transparent   $transparent      $white    $darkwhite     $white
-client.focused_inactive  $transparent   $transparent      $white    $transparent
-client.unfocused         $transparent   #2b303b           #888888   #292d2e
-client.urgent            $transparent   $transparent      $red      $transparent
-client.background        $transparent
-
-floating_modifier $mod
-
-# SOUND
-bindsym XF86AudioLowerVolume  exec amixer -D pulse sset Master 5%-
-bindsym XF86AudioRaiseVolume  exec amixer -D pulse sset Master 5%+
-bindsym XF86AudioMute         exec amixer -D pulse set  Master 1+ toggle
-
-bindsym $sup+Up   exec amixer -D pulse sset Master 5%+
-bindsym $sup+Down exec amixer -D pulse sset Master 5%-
-bindsym $sup+m    exec amixer -D pulse set  Master 1+ toggle
-
-# i3lock
-bindsym $mod+Shift+x exec lock
-bindsym $mod+Shift+s exec shutdown -h now
-
+#i3block 
+# bar {
+# status_command i3blocks
+# height 24
+# font pango:Mono Powerline 12
+#}
