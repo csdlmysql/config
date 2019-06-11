@@ -61,6 +61,8 @@ set expandtab
 
 " when using the >> or << commands, shift lines by 4 spaces
 set shiftwidth=4
+" relative number
+set relativenumber
 
 " automatic installation
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -140,3 +142,9 @@ endif
 set termguicolors
 let g:gruvbox_italic=1
 colorscheme gruvbox
+
+" auto tags
+"let g:auto_ctags = 1
+"let g:auto_ctags_tags_name = 'tags'
+"let g:auto_ctags_tags_args = ['--tag-relative=yes', '--recurse=yes', '--sort=yes']
+"let g:auto_ctags_filetype_mode = 1
