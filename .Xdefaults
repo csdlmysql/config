@@ -1,8 +1,4 @@
-urxvt*depth: 32
-urxvt*background: rgba:0000/0000/0200/c800
-
-urxvt*transparent: true
-urxvt*shading: 22
-
-urxvt.scrollBar:false
-
+xterm.*backarrowKey: false
+XTerm*VT100.Translations:       #override\n\
+ Shift Ctrl <KeyPress> v: insert-selection(CLIPBOARD)\n\
+ Shift Ctrl <KeyPress> c: copy-selection(CLIPBOARD)\n
