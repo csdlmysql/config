@@ -22,6 +22,11 @@ Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'shougo/vimshell.vim'
 Plug 'bling/vim-bufferline' " buffer line status
 Plug 'w0rp/ale' " check syntax python
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'roxma/nvim-yarp'
+Plug 'mattn/emmet-vim'
+Plug 'pangloss/vim-javascript'
+
 call plug#end()
 " autocmd VimEnter * NERDTree If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
@@ -148,3 +153,19 @@ colorscheme gruvbox
 "let g:auto_ctags_tags_name = 'tags'
 "let g:auto_ctags_tags_args = ['--tag-relative=yes', '--recurse=yes', '--sort=yes']
 "let g:auto_ctags_filetype_mode = 1
+
+"Deoplete
+"set pyxversion=3
+set encoding=utf-8
+let g:python_host_prog = "/usr/bin/python2"
+let g:python3_host_prog = "/usr/bin/python3"
+let g:deoplete#enable_at_startup = 0
+
+"vim -javascript
+let g:ycm_use_clangd = 0
+let g:javascript_plugin_jsdoc = 1
+"kite
+let g:kite_tab_complete=1
+autocmd CompleteDone * if !pumvisible() | pclose | endif
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+set laststatus=2  " always display the status line
