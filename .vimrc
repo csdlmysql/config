@@ -21,13 +21,15 @@ Plug 'morhetz/gruvbox' " best colorcheme for human
 Plug 'google/yapf', { 'rtp': 'plugins/vim', 'for': 'python' }
 Plug 'shougo/vimshell.vim'
 Plug 'bling/vim-bufferline' " buffer line status
-Plug 'w0rp/ale' " check syntax python
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'roxma/nvim-yarp'
 Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
+Plug 'Yggdroot/indentLine'
+Plug 'vim-syntastic/syntastic'
 
 call plug#end()
+
 " autocmd VimEnter * NERDTree If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 set background=dark
@@ -53,6 +55,7 @@ set colorcolumn=80
 imap jj <Esc>
 
 " show number line
+"
 set number
 
 "set tab = 4 space
@@ -148,12 +151,6 @@ set termguicolors
 let g:gruvbox_italic=1
 colorscheme gruvbox
 
-" auto tags
-"let g:auto_ctags = 1
-"let g:auto_ctags_tags_name = 'tags'
-"let g:auto_ctags_tags_args = ['--tag-relative=yes', '--recurse=yes', '--sort=yes']
-"let g:auto_ctags_filetype_mode = 1
-
 "Deoplete
 "set pyxversion=3
 set encoding=utf-8
@@ -167,5 +164,21 @@ let g:javascript_plugin_jsdoc = 1
 "kite
 let g:kite_tab_complete=1
 autocmd CompleteDone * if !pumvisible() | pclose | endif
-set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-set laststatus=2  " always display the status line
+let g:indentLine_setColors = 239
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+
+map <C-Y> :call yapf#YAPF()<cr>
+imap <C-Y> <c-o>:call yapf#YAPF()<cr>
+
+"syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_error_symbol = "\u2717"
+let g:syntastic_warning_symbol = "\u26A0"
+let g:syntastic_always_populate_loc_list = 1

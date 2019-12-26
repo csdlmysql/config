@@ -13,9 +13,7 @@ export passuser="c0nFid3ntiAlsng0"
 export GTK_IM_MODULE=ibus
 export QT_IM_MODULE=ibus /usr/bin/Telegram
 export XMODIFIERS=@im=ibus
-# Dành cho những phần mềm dựa trên qt4
 export QT4_IM_MODULE=ibus
-# Dành cho những phần mềm dùng thư viện đồ họa clutter
 export CLUTTER_IM_MODULE=ibus
 
 export VOCABULARY=/home/for/p/shellscript/vocabulary.txt
