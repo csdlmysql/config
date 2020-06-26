@@ -27,7 +27,7 @@ Plug 'mattn/emmet-vim'
 Plug 'pangloss/vim-javascript'
 Plug 'Yggdroot/indentLine'
 Plug 'vim-syntastic/syntastic'
-
+Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
 call plug#end()
 
 " autocmd VimEnter * NERDTree If using a dark background within the editing area and syntax highlighting
@@ -182,3 +182,12 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "\u2717"
 let g:syntastic_warning_symbol = "\u26A0"
 let g:syntastic_always_populate_loc_list = 1
+
+"oni
+if exists('g:gui_oni')
+    " Statements here
+endif
+autocmd BufReadPost *                                                                                                                                                                                   
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \ exe "normal! g`\"" |
+  \ endif

@@ -137,17 +137,16 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-
-# better yaourt colors
 export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
 export userVPN="hiepvt@vccloud.vn"
 export passVPN="L0calAttack3rn0us3r"
 
 export GTK_IM_MODULE=ibus
-export QT_IM_MODULE=ibus /usr/bin/Telegram
+export QT_IM_MODULE=ibus /usr/bin/telegram-desktop
 export XMODIFIERS=@im=ibus
 export QT4_IM_MODULE=ibus
 export CLUTTER_IM_MODULE=ibus
 
 export VOCABULARY=/home/for/p/shellscript/vocabulary.txt
 export GOOGLE_APPLICATION_CREDENTIALS=/home/for/p/shellscript/key.json
+export PATH=~/home/for/go/bin
