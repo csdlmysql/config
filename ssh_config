@@ -1,0 +1,40 @@
+IdentityFile ~/.ssh/vccloud
+Host billing
+    Hostname 10.5.70.33
+    IdentityFile ~/.ssh/vccloud
+    User hiepvt
+
+Host aws
+    Hostname 103.56.158.149
+    IdentityFile ~/.ssh/vccloud
+    User root
+
+Host webhook
+    Hostname 45.124.95.236
+    IdentityFile ~/.ssh/vccloud
+    User root
+
+Host audit
+    Hostname 10.5.68.161
+    User hiepvt
+
+Host report
+    Hostname 10.5.68.120
+    User hiepvt
+
+
+Host staging
+    Hostname 10.5.68.163
+    User hiepvt
+
+Host dev
+    Hostname 10.5.70.188
+    User root
+
+Host postgres
+    Hostname 10.5.69.33
+    User root
+
+Host bitool
+    Hostname 10.5.69.115
+    User hiepvt
